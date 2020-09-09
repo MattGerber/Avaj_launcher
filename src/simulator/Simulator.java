@@ -22,8 +22,8 @@ public class Simulator {
             if (line != null) {
                 weatherTower = new WeatherTower();
                 int simulations = Integer.parseInt(line.split(" ") [0]);
-                if (simulations < 0) {
-                    System.out.println("Invalid simulations count" + simulations);
+                if (simulations <= 0) {
+                    System.out.println("Invalid simulations count " + simulations);
                     System.exit(1);
                 }
                 while ((line = reader.readLine()) != null) {
@@ -51,7 +51,7 @@ public class Simulator {
         } catch (IOException e) {
             System.out.println("There was an error reading file-->" + arg[0]);
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Please provide Simulation file");
+            System.out.println("Please provide Valid Simulation file");
         }
     }
 }
