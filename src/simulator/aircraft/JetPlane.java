@@ -14,7 +14,7 @@ import weather.Coordinates;
 public class JetPlane extends Aircraft implements Flyable {
     private WeatherTower weatherTower;
 
-    JetPlane(String name, Coordinates coordinates) {
+    public JetPlane(String name, Coordinates coordinates) {
         super(name, coordinates);
     }
     @Override
@@ -44,6 +44,7 @@ public class JetPlane extends Aircraft implements Flyable {
         }
         if (this.coordinates.getHeight() == 0){
             Simulator.writer.println("JetPlane#" + this.name + "(" + this.id + ") Landing");
+            this.weatherTower.unregister(this);
             Simulator.writer.println("Tower says: JetPlane#" + this.name + "(" + this.id + ") Unregistered from weather tower.");
         }
 

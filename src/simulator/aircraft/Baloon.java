@@ -14,7 +14,7 @@ import weather.Coordinates;
 public class Baloon extends Aircraft implements Flyable {
     private WeatherTower weatherTower;
 
-    Baloon(String name, Coordinates coordinates) {
+    public Baloon(String name, Coordinates coordinates) {
         super(name, coordinates);
     }
     @Override
@@ -42,9 +42,10 @@ public class Baloon extends Aircraft implements Flyable {
                 Simulator.writer.println("Baloon#" + this.name + "(" + this.id + ") Snow piling on Baloon");
                 break;
         }
-        if (this.coordinates.getHeight() == 0){
+        if (this.coordinates.getHeight() <= 0){
             Simulator.writer.println("Baloon#" + this.name + "(" + this.id + ") Landing");
             Simulator.writer.println("Tower says: Baloon#" + this.name + "(" + this.id + ") Unregistered from weather tower.");
+            this.weatherTower.unregister(this);
         }
 
     }
